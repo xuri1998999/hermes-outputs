@@ -1,6 +1,6 @@
 # Hermès Outputs | 海拓 AI 工具速测产出记录
 
-> 记录 Hermès Agent 每日 AI 工具速测成果，含抓取日志、质量审核记录与分发追踪。
+> 记录 Hermès（海拓 Agent）每日 AI 工具速测成果，含抓取日志、质量审核记录与分发追踪。
 
 ## 仓库说明
 
@@ -28,11 +28,11 @@ hermes-outputs/
 
 ## 协作成员
 
-| 成员 | 角色 | GitHub |
-|------|------|--------|
-| 旭日 | Owner | @joesun |
-| Hermès | Agent | — |
-| Aily | 协调助手 | — |
+| 成员 | 角色 | GitHub | 仓库权限 |
+|------|------|--------|---------|
+| 旭日 | Owner | @joesun | Admin (full control) |
+| Hermès | Agent | — | 通过 Token 自动 Push |
+| Aily | 协调助手 | — | 通过 Token 自动 Push |
 
 ## 更新频率
 
