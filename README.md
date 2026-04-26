@@ -10,12 +10,22 @@
 
 ```
 hermes-outputs/
-├── README.md              # 本文件
-├── daily/                 # 每日产出记录
-│   └── YYYY-MM-DD.md      # 当日工作日志
-├── quality/               # 质量审核记录
-│   └── audit-YYYY-MM-DD.md
-└── inputs/                # 原始抓取记录（JSON/Lines）
+├── README.md                        # 本文件
+├── SOUL.md                          # 海拓 Agent 身份定义
+├── memory/                          # 每日工作日记
+│   └── 2026/YYYY-MM-DD.md           # 每日原始记录
+├── learning-materials/              # 素材库 & 竞品分析
+│   ├── DeepSeek-V4-百万上下文架构革新.md
+│   ├── 爆款元素整理汇总.md
+│   ├── 爆款选题表.md
+│   ├── 选题备选库.md
+│   ├── 选题模板库.md
+│   └── 风格萃取SKILL.md
+├── skills/                          # Agent 技能规范
+│   ├── haituo-output-SKILL.md       # 海拓输出规范
+│   └── content-quality-guide-SKILL.md
+└── quality/                         # 质量审核记录
+    └── 2026/
 ```
 
 ## 产出分类标准
@@ -36,7 +46,7 @@ hermes-outputs/
 
 ## 更新频率
 
-工作日每日更新（周一至周五），节假日顺延。
+每日自动更新（周一至周日）。
 
 ---
-*由 Aily 自动生成 · 最后更新 2026-04-21*
+*由 Aily 自动生成 · 最后更新 2026-04-26*
