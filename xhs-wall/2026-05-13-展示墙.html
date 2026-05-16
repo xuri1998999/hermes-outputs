@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>2026-05-13 小红书四篇展示墙 | Hermes B</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f7;color:#222;padding:32px 16px}
+  h1{text-align:center;font-size:26px;margin-bottom:8px}
+  .sub{text-align:center;color:#888;margin-bottom:32px;font-size:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:1280px;margin:0 auto}
+  .card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.06);transition:transform .2s}
+  .card:hover{transform:translateY(-4px)}
+  .cover{width:100%;aspect-ratio:4/5;object-fit:cover;background:#eee;cursor:pointer}
+  .body{padding:18px}
+  .tag{display:inline-block;padding:3px 10px;background:#ff2e4d;color:#fff;border-radius:12px;font-size:12px;margin-bottom:10px}
+  .title{font-size:17px;font-weight:600;line-height:1.4;margin-bottom:12px;color:#222}
+  .excerpt{font-size:13px;color:#555;line-height:1.6;max-height:96px;overflow:hidden}
+  .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}
+  .thumbs img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:6px;cursor:pointer;background:#eee}
+  .hashtags{font-size:12px;color:#ff2e4d;margin-top:12px;line-height:1.6}
+  .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99;align-items:center;justify-content:center;padding:20px}
+  .modal.on{display:flex}
+  .modal img{max-width:90vw;max-height:90vh;border-radius:8px}
+  .close{position:absolute;top:20px;right:30px;color:#fff;font-size:36px;cursor:pointer;user-select:none}
+</style>
+</head>
+<body>
+<h1>📔 2026-05-13 小红书四篇 · Hermes B 反共识系列</h1>
+<p class="sub">基于公众号《为什么我劝你别用 Hermes 搭超过 5 个 Agent》改编 · 4 篇笔记 · 16 张配图</p>
+<div class="grid" id="grid"></div>
+<div class="modal" id="m" onclick="this.classList.remove('on')"><span class="close">×</span><img id="mi" src=""></div>
+<script>
+const data = [
+  {tag:"种草型",title:"砍掉 7 个 Agent 之后，我居然又能睡整觉了",excerpt:"有点反共识但真心分享！我把 Agent 从 11 个砍到 4 个，效率反而高了 3 倍。半夜告警归零，日志 5 分钟扫完，物理隔离零打架...",tags:"#AI工具 #Hermes #多Agent #避坑指南 #自动化",imgs:["https://images.unsplash.com/photo-1624313881228-df7454e6d6af?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1590363718520-6cc406cd0fd1?w=1080&h=1350&fit=crop&q=80"]},
+  {tag:"对比型",title:"11 个 Agent vs 4 个 Agent，差距真的大到离谱",excerpt:"同一个我，前后两个月，完全两个世界。救火时间 7 小时/天 vs 0，半夜被吵醒 3 次/周 vs 0，效率 1x vs 3x。5 个就是拐点...",tags:"#AI工具 #Hermes #多Agent系统 #避坑指南 #反共识",imgs:["https://images.unsplash.com/photo-1707304472925-c9f0fda4d7a9?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1704062727315-eb621bdf2632?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1632733456852-e740891082a9?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1624571345030-5afab395356e?w=1080&h=1350&fit=crop&q=80"]},
+  {tag:"技巧型",title:"3 个 Agent 数量管控技巧，少踩 3 个月坑",excerpt:"一句话说不清的 Agent 直接合并；Agent 之间不能互相依赖，物理隔离比编排稳 10 倍；每周复盘没价值的直接砍，不要心软...",tags:"#AI工具 #Hermes #Agent协作 #技巧分享 #开源工具",imgs:["https://images.unsplash.com/photo-1769143596694-568d3ac1d6b0?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1773966071293-bea3d7646fd1?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1589606331063-52b1afca1b73?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1658837942967-43bf06fadbc1?w=1080&h=1350&fit=crop&q=80"]},
+  {tag:"科普型",title:"搭多 Agent 前必看的 3 条反常识",excerpt:"模型再聪明，规则没立，4 个 bot 也能在你家半夜开 40 分钟无意义早会。bot 默认听见全部、reply 自带隐式@、SOUL.md 要写啥时候闭嘴。它们需要的是规则，不是智商。",tags:"#AI工具 #Hermes #多Agent #自动化 #程序员日常",imgs:["https://images.unsplash.com/photo-1653549893012-b8b4fbe97630?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1637778352878-f0b46d574a04?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1730578725695-714b52eed8f5?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1612529377282-e6c1d5fe7695?w=1080&h=1350&fit=crop&q=80"]}
+];
+const fix = u => u.replace(/(photo-[a-z0-9\-]+)&/,'$1?');
+const g = document.getElementById('grid');
+data.forEach(d=>{
+  const c=document.createElement('div');c.className='card';
+  c.innerHTML=`<img class="cover" src="${fix(d.imgs[0])}" onclick="show(this.src)"><div class="body"><span class="tag">${d.tag}</span><div class="title">${d.title}</div><div class="excerpt">${d.excerpt}</div><div class="thumbs">${d.imgs.slice(1).map(u=>`<img src="${fix(u)}" onclick="show(this.src)">`).join('')}</div><div class="hashtags">${d.tags}</div></div>`;
+  g.appendChild(c);
+});
+function show(s){document.getElementById('mi').src=s;document.getElementById('m').classList.add('on');}
+</script>
+</body>
+</html>

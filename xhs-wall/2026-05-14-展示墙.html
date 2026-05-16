@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>2026-05-14 小红书三篇展示墙 | 留下 4 个 Agent 系列</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f7;color:#222;padding:32px 16px}
+  h1{text-align:center;font-size:26px;margin-bottom:8px}
+  .sub{text-align:center;color:#888;margin-bottom:32px;font-size:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;max-width:1280px;margin:0 auto}
+  .card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.06);transition:transform .2s}
+  .card:hover{transform:translateY(-4px)}
+  .cover{width:100%;aspect-ratio:4/5;object-fit:cover;background:#eee;cursor:pointer}
+  .body{padding:18px}
+  .tag{display:inline-block;padding:3px 10px;background:#ff2e4d;color:#fff;border-radius:12px;font-size:12px;margin-bottom:10px}
+  .title{font-size:17px;font-weight:600;line-height:1.4;margin-bottom:12px;color:#222}
+  .excerpt{font-size:13px;color:#555;line-height:1.6;max-height:120px;overflow:hidden}
+  .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}
+  .thumbs img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:6px;cursor:pointer;background:#eee}
+  .hashtags{font-size:12px;color:#ff2e4d;margin-top:12px;line-height:1.6}
+  .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99;align-items:center;justify-content:center;padding:20px}
+  .modal.on{display:flex}
+  .modal img{max-width:90vw;max-height:90vh;border-radius:8px}
+  .close{position:absolute;top:20px;right:30px;color:#fff;font-size:36px;cursor:pointer;user-select:none}
+</style>
+</head>
+<body>
+<h1>📔 2026-05-14 小红书三篇 · 留下 4 个 Agent 系列</h1>
+<p class="sub">基于公众号《我最终留下的 4 个 Agent，每天帮我省 3 小时》改编 · 3 篇笔记 · 12 张配图</p>
+<div class="grid" id="grid"></div>
+<div class="modal" id="m" onclick="this.classList.remove('on')"><span class="close">×</span><img id="mi" src=""></div>
+<script>
+const data = [
+  {tag:"种草型",title:"砍掉 7 个 AI 助手之后，我居然每天多出 3 小时",excerpt:"🤯 真的有点反共识！我之前堆了 11 个 AI 助手，越堆越累，每天救火 7 小时。后来砍到 4 个，效率反而高了 3 倍。选题官、草稿工厂、发布助手、复盘官，加起来正好省 3 小时...",tags:"#AI工具 #效率提升 #多Agent #反共识 #自媒体工作流",imgs:["https://images.unsplash.com/photo-1763128516808-785e80c1dd68?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1690494825126-98fa59e2ae24?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1632251141959-40b21a6c118c?w=1080&h=1350&fit=crop&q=80"]},
+  {tag:"对比型",title:"11 个 AI 助手 vs 4 个 AI 助手，差距真的离谱",excerpt:"🥲 同一个我，前后三个月，完全两个世界。救火时间 7h/天 vs 0，半夜被吵醒 3 次/周 vs 0，效率 1x vs 3x。结论很清楚：5 个就是临界点，再往上加就是养员工...",tags:"#AI工具 #Hermes #多Agent系统 #避坑指南 #反共识",imgs:["https://images.unsplash.com/photo-1764557222271-9d0556161d35?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1698064534597-e039edaa0717?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1666537072157-440346cea066?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1671490290913-281a8c3ebe9e?w=1080&h=1350&fit=crop&q=80"]},
+  {tag:"技巧型",title:"3 个 AI 助手数量管控技巧，少踩 3 个月坑",excerpt:"😮‍💨 用 11 个 AI 跑了三个月才想明白：① 只留主干道砍掉支线 ② 一句话说不清的直接合并 ③ 物理隔离比编排稳 10 倍。一句话总结：不是堆得越多越好，是少到刚刚好...",tags:"#AI工具 #Hermes #Agent协作 #技巧分享 #开源工具",imgs:["https://images.unsplash.com/photo-1616768945744-5a5adcaea824?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1633194394933-1fa5754ea72b?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1676337168204-08e2c3b0e10c?w=1080&h=1350&fit=crop&q=80","https://images.unsplash.com/photo-1639976518732-935168edef85?w=1080&h=1350&fit=crop&q=80"]}
+];
+const g = document.getElementById('grid');
+data.forEach(d=>{
+  const c=document.createElement('div');c.className='card';
+  c.innerHTML=`<img class="cover" src="${d.imgs[0]}" onclick="show(this.src)"><div class="body"><span class="tag">${d.tag}</span><div class="title">${d.title}</div><div class="excerpt">${d.excerpt}</div><div class="thumbs">${d.imgs.slice(1).map(u=>`<img src="${u}" onclick="show(this.src)">`).join('')}</div><div class="hashtags">${d.tags}</div></div>`;
+  g.appendChild(c);
+});
+function show(s){document.getElementById('mi').src=s;document.getElementById('m').classList.add('on');}
+</script>
+</body>
+</html>
