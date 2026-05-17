@@ -1,52 +1,37 @@
-# Hermès Outputs | 海拓 AI 工具速测产出记录
+﻿# Hermes Outputs
 
-> 记录 Hermès（海拓 Agent）每日 AI 工具速测成果，含抓取日志、质量审核记录与分发追踪。
+> 旭日扬升 · AI 工具测评 + 内容创作公开产出记录
 
-## 仓库说明
-
-本仓库由 Aily（AI 助手）自动维护，记录海拓（Hermès Agent）的每日工作产出。
-
-## 内容结构
+## 目录结构
 
 ```
 hermes-outputs/
-├── README.md                        # 本文件
-├── SOUL.md                          # 海拓 Agent 身份定义
-├── memory/                          # 每日工作日记
-│   └── 2026/YYYY-MM-DD.md           # 每日原始记录
-├── learning-materials/              # 素材库 & 竞品分析
-│   ├── DeepSeek-V4-百万上下文架构革新.md
-│   ├── 爆款元素整理汇总.md
-│   ├── 爆款选题表.md
-│   ├── 选题备选库.md
-│   ├── 选题模板库.md
-│   └── 风格萃取SKILL.md
-├── skills/                          # Agent 技能规范
-│   ├── haituo-output-SKILL.md       # 海拓输出规范
-│   └── content-quality-guide-SKILL.md
-└── quality/                         # 质量审核记录
-    └── 2026/
+├── README.md                       # 本文件
+├── SOUL.md                         # Agent 身份定义
+├── index.html                      # CF Pages 总门户
+├── xhs-wall/                       # 📕 小红书展示墙（每日 3 篇）
+├── wx-img/                         # 公众号配图（AI 生成 · 无版权问题）
+├── team-log/                       # 团队协作日志
+├── learning-materials/             # 学习资料 & 框架手册
+└── skills/                         # Agent 技能规范
 ```
 
-## 产出分类标准
+## 对外展示链接
 
-| 标记 | 含义 | 处理方式 |
-|------|------|---------|
-| ✅ 可入库 | 符合发布标准 | 写入多维表格内容池 |
-| ⚠️ 待审核 | 需 Aily 确认 | 推送给旭日审核 |
-| 🔴 暂不入库 | 争议性/不实内容 | 归档备查 |
+- 🌐 总门户：https://xhs-wall.pages.dev/
+- 📕 小红书合集：https://xhs-wall.pages.dev/xhs-wall/
 
-## 协作成员
+## 协作角色
 
-| 成员 | 角色 | GitHub | 仓库权限 |
-|------|------|--------|---------|
-| 旭日 | Owner | @joesun | Admin (full control) |
-| Hermès | Agent | — | 通过 Token 自动 Push |
-| Aily | 协调助手 | — | 通过 Token 自动 Push |
+| 角色 | 职责 |
+|------|------|
+| 旭日 | Owner，账号主理人 |
+| Claudian | 本地 Agent · 内容生成 + 自动同步 |
+| C1 | 外部 Agent · 方法论与框架沉淀 |
 
-## 更新频率
+## 更新机制
 
-每日自动更新（周一至周日）。
+每日小红书 SOP 第 4 步后自动 git push，CF Pages 30 秒内重部署。
 
 ---
-*由 Aily 自动生成 · 最后更新 2026-04-26*
+*持续更新 · 2026-05-17 重整*
